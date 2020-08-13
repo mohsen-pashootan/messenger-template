@@ -1,0 +1,28 @@
+.chat-status-container {
+    background-color: #cccccc;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .avatar {
+        margin-top: 28px;
+        margin-bottom: 28px;
+        ;
+
+        .img {
+            width: 100px;
+            height: 100px
+        }
+
+    }
+
+
+    .name {
+        background-color: seashell;
+        // width: 100%;
+        text-align: center;
+        padding: 14px 30px 10px;
+    }
+}

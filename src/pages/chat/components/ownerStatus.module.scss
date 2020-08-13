@@ -1,0 +1,44 @@
+.my-status-container {
+    background-color: #cccccc;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .avatar {
+        margin-top: 28px;
+        margin-bottom: 28px;
+        ;
+
+        .img {
+            width: 100px;
+            height: 100px
+        }
+
+    }
+
+
+    .name {
+        background-color: seashell;
+        // width: 100%;
+        text-align: center;
+        padding: 14px 30px 10px;
+    }
+}
+
+.log-out {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: #e9e506;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 32px;
+    display: inline-block;
+    margin: 4px 2px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}

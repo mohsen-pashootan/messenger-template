@@ -1,0 +1,46 @@
+@import '../../constants.scss';
+
+.home-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 50px 130px;
+    padding-bottom: 50px;
+    background-color: #f7f7f7;
+
+    .home-title {
+        background-color: #9de1fe;
+        text-align: center;
+    }
+
+    .home-name {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-items: flex-end;
+        margin: 70px;
+    }
+
+    .home-input {
+        padding: 12px 20px;
+        width: 30%;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .home-button {
+        background-color: #4CAF50;
+        width: 200px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 15px 32px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+    }
+}
