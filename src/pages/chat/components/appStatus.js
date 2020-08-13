@@ -20,7 +20,6 @@ export default function AppStatus({ onSearch, selfStatusMode }) {
     setMode((prevMode) => {
       return "list";
     });
-    onSearch([]);
     selfStatusMode("list");
   }
 
