@@ -12,7 +12,7 @@ class ChatManager {
       {
         id: 1,
         name: "Maryam Habibi",
-        avatar: "/avatar-f.jpg",
+        avatar: "/avatar-f.png",
         time: "21:14",
         unreadMessageCount: 5,
         text: "Hi, This is a message",
@@ -56,7 +56,7 @@ class ChatManager {
       {
         id: 2,
         name: "Mina Mohammadi",
-        avatar: "/avatar-f.jpg",
+        avatar: "/avatar-f.png",
         time: "11:30",
         unreadMessageCount: 15,
         text: "Another Message",
@@ -241,7 +241,7 @@ class ChatManager {
       {
         id: 6,
         name: "Sarah Kiani",
-        avatar: "/avatar-f.jpg",
+        avatar: "/avatar-f.png",
         time: "11:30",
         unreadMessageCount: 15,
         text: "Another Message",
@@ -285,7 +285,7 @@ class ChatManager {
       {
         id: 7,
         name: "Minoo Mohammadian",
-        avatar: "/avatar-f.jpg",
+        avatar: "/avatar-f.png",
         time: "21:14",
         unreadMessageCount: 65,
         text: "Hi, This is a message",
@@ -373,7 +373,7 @@ class ChatManager {
       {
         id: 9,
         name: "Zahra Gholami",
-        avatar: "/avatar-f.jpg",
+        avatar: "/avatar-f.png",
         time: "21:14",
         unreadMessageCount: 65,
         text: "Hi, This is a message",
