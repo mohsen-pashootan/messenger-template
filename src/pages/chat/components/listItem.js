@@ -11,6 +11,7 @@ export default function ListItem({
   selected = false,
   onClick,
 }) {
+  const count = unreadMessageCount !== 0;
   return (
     <div
       className={
@@ -25,7 +26,7 @@ export default function ListItem({
       <div className={styles["message"]}>{text}</div>
       <div className={styles["time"]}>{time}</div>
       <div className={styles["info"]}>
-        <div>{unreadMessageCount}</div>
+        {count && <div> {unreadMessageCount}</div>}
       </div>
     </div>
   );
