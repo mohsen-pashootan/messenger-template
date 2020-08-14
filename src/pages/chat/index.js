@@ -49,7 +49,7 @@ export default function Index({ match }) {
   const [state, dispatch] = useReducer(reducer, {
     list: [],
     recent: [],
-    searchedlist: [],
+    searchedlist: "",
     status: "",
     selectedChatId: null,
   });
@@ -81,9 +81,7 @@ export default function Index({ match }) {
   }
 
   function handleSearch(e) {
-    const searchedChat = state.list.filter((item) =>
-      item.name.toLowerCase().includes(e.toLowerCase())
-    );
+    const searchedChat = e;
     dispatch({ type: "SEARCHED_LIST", payload: searchedChat });
   }
 
@@ -99,23 +97,26 @@ export default function Index({ match }) {
           <OwnerStatus userName={match.params.username} />
         ) : (
           <List>
-            {(state.searchedlist.length > 0
-              ? state.searchedlist
-              : state.list
-            ).map((item) => {
-              return (
-                <ListItem
-                  key={item.id}
-                  name={item.name}
-                  avatar={item.avatar}
-                  time={item.time}
-                  unreadMessageCount={item.unreadMessageCount}
-                  text={item.text}
-                  selected={item.id === state.selectedChatId}
-                  onClick={() => handleClick(item.id)}
-                />
-              );
-            })}
+            {state.list
+              .filter((item) =>
+                item.name
+                  .toLowerCase()
+                  .includes(state.searchedlist.toLowerCase())
+              )
+              .map((item) => {
+                return (
+                  <ListItem
+                    key={item.id}
+                    name={item.name}
+                    avatar={item.avatar}
+                    time={item.time}
+                    unreadMessageCount={item.unreadMessageCount}
+                    text={item.text}
+                    selected={item.id === state.selectedChatId}
+                    onClick={() => handleClick(item.id)}
+                  />
+                );
+              })}
           </List>
         )}
       </div>
@@ -137,3 +138,7 @@ export default function Index({ match }) {
     </div>
   );
 }
+
+// (state.searchedlist.length > 0
+//   ? state.searchedlist
+//   : state.list
