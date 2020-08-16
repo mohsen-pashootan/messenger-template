@@ -5,6 +5,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    // overflow: auto;
+    // scroll-behavior: smooth;
+
+    >li {
+        text-decoration: none;
+    }
 
     .avatar {
         margin-top: 28px;
@@ -18,10 +24,8 @@
 
     }
 
-
     .name {
         background-color: seashell;
-        // width: 100%;
         text-align: center;
         padding: 14px 30px 10px;
     }

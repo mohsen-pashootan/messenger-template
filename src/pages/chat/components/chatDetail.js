@@ -28,7 +28,7 @@ export default function ChatDetail({
   useEffect(() => {
     myInput.current.focus();
     lastEmptyMessage.current.scrollIntoView({ behavior: "smooth" });
-  }, [selectedChatId, messages]);
+  }, [selectedChatId, messages.length]);
 
   function handleSubmitMessage() {
     if (text !== "") {

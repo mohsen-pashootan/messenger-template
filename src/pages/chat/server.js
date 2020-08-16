@@ -472,7 +472,8 @@ class ChatManager {
   }
 
   getChatLists() {
-    return this.chats.map(({ messages, ...rest }) => rest);
+    // return this.chats.map(({ messages, ...rest }) => rest);
+    return this.chats;
   }
 
   setMessage(text, chatId) {

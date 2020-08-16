@@ -1,10 +1,11 @@
 import React, { useEffect, useReducer } from "react";
 import AppStatus from "./components/appStatus";
-import OwnerStatus from "./components/ownerStatus";
+// import OwnerStatus from "./components/ownerStatus";
 import ListItem from "./components/listItem";
 import List from "./components/list";
 import ChatDetail from "./components/chatDetail";
 import styles from "./index.module.scss";
+
 import { getListItems, getRecentChats, setSubmitMessage } from "./server";
 
 function reducer(state, action) {
@@ -89,36 +90,45 @@ export default function Index({ match }) {
     dispatch({ type: "STATUS_ENABLED", payload: mode });
   }
 
+  function handleAddContact(id) {
+    // const addContact = state.list.find((item) => item.id === id);
+    handleClick(id);
+
+    // console.log(addContact);
+  }
+
   return (
     <div className={styles["layout"]}>
       <div className={styles["side"]}>
-        <AppStatus onSearch={handleSearch} selfStatusMode={handleStatusMode} />
-        {state.status === "status" ? (
-          <OwnerStatus userName={match.params.username} />
-        ) : (
-          <List>
-            {state.list
-              .filter((item) =>
-                item.name
-                  .toLowerCase()
-                  .includes(state.searchedlist.toLowerCase())
-              )
-              .map((item) => {
-                return (
-                  <ListItem
-                    key={item.id}
-                    name={item.name}
-                    avatar={item.avatar}
-                    time={item.time}
-                    unreadMessageCount={item.unreadMessageCount}
-                    text={item.text}
-                    selected={item.id === state.selectedChatId}
-                    onClick={() => handleClick(item.id)}
-                  />
-                );
-              })}
-          </List>
-        )}
+        <AppStatus
+          onSearch={handleSearch}
+          selfStatusMode={handleStatusMode}
+          userName={match.params.username}
+          list={state.list}
+          AddContact={handleAddContact}
+        />
+
+        <List>
+          {state.list
+            .filter((item) =>
+              item.name.toLowerCase().includes(state.searchedlist.toLowerCase())
+            )
+            .map((item) => {
+              const lastmessage = item.messages.length - 1;
+              return (
+                <ListItem
+                  key={item.id}
+                  name={item.name}
+                  avatar={item.avatar}
+                  time={item.time}
+                  unreadMessageCount={item.unreadMessageCount}
+                  text={item.messages[lastmessage].text}
+                  selected={item.id === state.selectedChatId}
+                  onClick={() => handleClick(item.id)}
+                />
+              );
+            })}
+        </List>
       </div>
       <div className={styles["main"]}>
         {state.selectedChatId && (
@@ -138,7 +148,3 @@ export default function Index({ match }) {
     </div>
   );
 }
-
-// (state.searchedlist.length > 0
-//   ? state.searchedlist
-//   : state.list

@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import TitleBar from "./titleBar";
+import SideBar from "./sideBar";
+import OwnerStatus from "./ownerStatus";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -8,7 +10,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./appStatus.module.scss";
 
-export default function AppStatus({ onSearch, selfStatusMode }) {
+export default function AppStatus({
+  onSearch,
+  selfStatusMode,
+  userName,
+  list,
+  AddContact,
+}) {
   const [mode, setMode] = useState("list");
   const input = useRef(null);
 
@@ -31,6 +39,12 @@ export default function AppStatus({ onSearch, selfStatusMode }) {
     selfStatusMode("status");
   }
 
+  function handleClose() {
+    setMode((prevMode) => {
+      return "list";
+    });
+  }
+
   useEffect(() => {
     if (mode === "search") {
       input.current.focus();
@@ -42,9 +56,18 @@ export default function AppStatus({ onSearch, selfStatusMode }) {
   const searchMode = mode === "search";
 
   return (
-    <TitleBar
-      first={
-        listMode ? (
+    <>
+      <SideBar toggle={statusMode} onClose={handleClose}>
+        {
+          <OwnerStatus
+            userName={userName}
+            list={list}
+            AddContact={AddContact}
+          />
+        }
+      </SideBar>
+      <TitleBar
+        first={
           <FontAwesomeIcon
             icon={faBars}
             size="lg"
@@ -52,41 +75,33 @@ export default function AppStatus({ onSearch, selfStatusMode }) {
             className={styles["pointer"]}
             onClick={gotoStatusMode}
           />
-        ) : (
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            size="lg"
-            color="#009588"
-            className={styles["pointer"]}
-            onClick={gotoListMode}
-          />
-        )
-      }
-      middle={
-        <div className={styles["app-title"]}>
-          {statusMode && "Profile"}
-          {listMode && "Fancy Messenger"}
-          {searchMode && (
-            <input
-              type="text"
-              className={styles["search-text"]}
-              ref={input}
-              onChange={(e) => onSearch(e.target.value)}
+        }
+        middle={
+          <div className={styles["app-title"]}>
+            {statusMode && "Profile"}
+            {listMode && "Fancy Messenger"}
+            {searchMode && (
+              <input
+                type="text"
+                className={styles["search-text"]}
+                ref={input}
+                onChange={(e) => onSearch(e.target.value)}
+              />
+            )}
+          </div>
+        }
+        last={
+          listMode && (
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="lg"
+              color="#009588"
+              className={styles["pointer"]}
+              onClick={gotoSearchMode}
             />
-          )}
-        </div>
-      }
-      last={
-        listMode && (
-          <FontAwesomeIcon
-            icon={faSearch}
-            size="lg"
-            color="#009588"
-            className={styles["pointer"]}
-            onClick={gotoSearchMode}
-          />
-        )
-      }
-    />
+          )
+        }
+      />
+    </>
   );
 }
