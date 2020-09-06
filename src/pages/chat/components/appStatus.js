@@ -63,18 +63,31 @@ export default function AppStatus({
             userName={userName}
             list={list}
             AddContact={AddContact}
+            onListModeClick={gotoListMode}
           />
         }
       </SideBar>
       <TitleBar
         first={
-          <FontAwesomeIcon
-            icon={faBars}
-            size="lg"
-            color="#009588"
-            className={styles["pointer"]}
-            onClick={gotoStatusMode}
-          />
+          <React.Fragment>
+            {searchMode ? (
+              <FontAwesomeIcon
+                icon={faArrowLeft}
+                size="lg"
+                color="#009588"
+                className={styles["pointer"]}
+                onClick={gotoListMode}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faBars}
+                size="lg"
+                color="#009588"
+                className={styles["pointer"]}
+                onClick={gotoStatusMode}
+              />
+            )}
+          </React.Fragment>
         }
         middle={
           <div className={styles["app-title"]}>
