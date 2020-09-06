@@ -99,7 +99,7 @@ export default function Index({ match }) {
 
   return (
     <div className={styles["layout"]}>
-      <div className={styles[`${!selectedChatId ? "side-small" : "side"}`]}>
+      <div className={styles[`${!state.selectedChatId ? "side-small" : "side"}`]}>
         <AppStatus
           onSearch={handleSearch}
           selfStatusMode={handleStatusMode}
@@ -130,7 +130,7 @@ export default function Index({ match }) {
             })}
         </List>
       </div>
-      <div className={styles[`${selectedChatId ? "main-small" : "main"}`]}>
+      <div className={styles[`${state.selectedChatId ? "main-small" : "main"}`]}>
         {state.selectedChatId && (
           <>
             <ChatDetail
