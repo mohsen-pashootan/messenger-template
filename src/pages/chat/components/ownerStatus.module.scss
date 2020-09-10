@@ -29,6 +29,13 @@
         text-align: center;
         padding: 14px 30px 10px;
     }
+
+    .describe {
+        text-align: justify;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: break-spaces;
+    }
 }
 
 .log-out {

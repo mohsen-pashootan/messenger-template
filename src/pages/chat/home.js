@@ -17,29 +17,31 @@ export default function Home() {
   }
 
   return (
-    <div className={styles["home-container"]}>
-      <div className={styles["home-title"]}>
-        <h1> HELLO DEAR CUSTOMER</h1>
-      </div>
-      <div className={styles["home-name"]}>
-        <h3>Please Write Your Name:</h3>
-        <input
-          className={styles["home-input"]}
-          ref={nameInput}
-          onChange={handleUsername}
-          onKeyDown={handleKeyDown}
-          type="text"
-          placeholder="Your name.."
-        ></input>
-      </div>
+    <div className={styles["home-wrapper"]}>
+      <div className={styles["home-container"]}>
+        <div className={styles["home-title"]}>
+          <h1> HELLO DEAR CUSTOMER</h1>
+        </div>
+        <div className={styles["home-name"]}>
+          <h3>Please Write Your Name:</h3>
+          <input
+            className={styles["home-input"]}
+            ref={nameInput}
+            onChange={handleUsername}
+            onKeyDown={handleKeyDown}
+            type="text"
+            placeholder="Your name.."
+          ></input>
+        </div>
 
-      <Link
-        className={styles["home-button"]}
-        to={`/chat-panel/${name}`}
-        params={{ name }}
-      >
-        Start A Conversation
-      </Link>
+        <Link
+          className={styles["home-button"]}
+          to={`/chat-panel/${name}`}
+          params={{ name }}
+        >
+          Start A Conversation
+        </Link>
+      </div>
     </div>
   );
 }
